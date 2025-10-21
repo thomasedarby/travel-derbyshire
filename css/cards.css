@@ -50,3 +50,170 @@ overflow: hidden;
     }
 }
 
+
+/* News Cards */
+.news-cards-container { 
+
+  display: flex;
+  gap: 1em; 
+  justify-content: space-around; 
+  flex-wrap: wrap;
+}
+
+.news-card { 
+  max-width: 350px; 
+  background: var(--color-white);
+  height: 494px; 
+  Display: flex; 
+  flex-direction: column;
+}
+
+.news-card-column-2 { 
+  margin: 1em 1em 0 1em; 
+  display: flex;
+  flex-direction: column;
+  flex: 1;               /* take remaining height in the card */
+  padding-bottom: 1em;   /* space from bottom edge */
+}
+
+/* Learn More link styles (both structures) */
+.news-card .news-card-text > a,
+.news-card .news-card-column-2 > a {
+  margin-top: auto;
+  color: var(--color-black);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration-line: underline;         /* avoid shorthand so color sticks */
+  text-decoration-color: var(--color-black);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.news-card .news-card-text > a:hover,
+.news-card .news-card-column-2 > a:hover {
+
+  text-decoration-color: var(--color-brand-orange);
+}
+
+
+
+.meta { 
+  font-size: 16px; 
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em; 
+}
+
+.meta > a { 
+  text-decoration: none;
+  padding: 0.25em 0.5em;
+  color: var(--color-black)
+}
+
+.meta-yellow { 
+  background-color: #F3AB2E26;
+  
+}
+
+.meta-teal { 
+  background-color: #00465026;
+}
+
+.meta-orange { 
+  background-color: #F1532D26;
+}
+
+/* CARDS SHARED */
+
+.small-card-yellow, .news-card-yellow { 
+    border-bottom: 4px solid var(--color-brand-yellow);
+}
+
+.small-card-teal, .news-card-teal { 
+    border-bottom: 4px solid var(--color-brand-teal);
+}
+
+.small-card-orange, .news-card-orange { 
+    border-bottom: 4px solid var(--color-brand-orange);
+}
+
+.small-card-yellow:hover, .news-card-yellow:hover { 
+  background: var(--color-brand-yellow);
+  transition: background-color 0.4s ease;
+  }
+
+  .small-card-teal:hover, .news-card-teal:hover { 
+  background: var(--color-brand-teal);
+  transition: background-color 0.4s ease;
+  color: var(--color-white)
+  }
+
+/* Teal cards: force all text to white on hover */
+.small-card-teal:hover, 
+.small-card-teal:hover * {
+  color: var(--color-white);
+}
+
+/* News teal card: make all text white on hover... */
+.news-card-teal:hover,
+.news-card-teal:hover * {
+  color: var(--color-white);
+}
+/* ...but keep the META area (author/date pills) dark/legible */
+.news-card-teal:hover .meta,
+.news-card-teal:hover .meta a {
+  color: var(--color-black);
+}
+
+/* Ensure the Learn More link in teal cards stays white and its underline matches the text */
+.news-card-teal:hover .news-card-text > a,
+.news-card-teal:hover .news-card-column-2 > a {
+  color: var(--color-white);
+  text-decoration-color: currentColor; /* underline follows text colour */
+}
+
+  .small-card-orange:hover, .news-card-orange:hover { 
+  background: var(--color-brand-orange);
+  }
+
+  /* meta on hover */
+
+.news-card-teal:hover .meta-teal {
+  background: rgba(0, 70, 80, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.news-card-yellow:hover .meta-yellow {
+  background: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.news-card-orange:hover .meta-orange {
+  background: rgba(255, 255, 255, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+
+/* Add the > via CSS */
+.news-card .news-card-text > a::after,
+.news-card .news-card-column-2 > a::after {
+  content: ">";
+  display: inline-block;
+  margin-left: 0.5em;
+  transition: transform 0.2s ease;
+  text-decoration: none; 
+  font-size: 18px; 
+  
+}
+
+/* Nudge the > on hover */
+.news-card .news-card-text > a:hover::after,
+.news-card .news-card-column-2 > a:hover::after {
+  transform: translateX(3px);
+}
+
+@media ( max-width: 1105px ) {
+    .news-cards-container, .cards { 
+        margin: 0 1rem; 
+    }
+}

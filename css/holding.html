@@ -1,77 +1,6 @@
 <!-- NEWS CARDS -->
 
-<div class="cards news-cards-container">
-  <div class="card-and-title">
-    <h3>concessionary Fare</h3>
-
-    <div class="news-card news-card-yellow">
-      <div class="news-card-column-1 card-media">
-        <img src="images/travelmaster.jpg" alt="" />
-      </div>
-
-      <div class="news-card-column-2">
-        <div class="meta">
-          <a class="meta-author meta-yellow" href="">Mark Sheldon</a>
-          <a class="meta-date meta-yellow" href="">14 April 2025</a>
-        </div>
-
-        <h5>What is Lorem Ipsum?</h5>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </p>
-        <a href="#">Learn More</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="card-and-title">
-    <h3>concessionary Fare</h3>
-    <div class="news-card news-card-teal">
-      <div class="news-card-column-1 card-media">
-        <img src="images/travelDerbyshireNews.jpg" alt="" />
-      </div>
-
-      <div class="news-card-column-2">
-        <div class="meta">
-          <a class="meta-author meta-teal" href="">Mark Sheldon</a>
-          <a class="meta-date meta-teal" href="">14 April 2025</a>
-        </div>
-
-        <h5>Why do we use it?</h5>
-        <p>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout.
-        </p>
-        <a href="#">Learn More </a>
-      </div>
-    </div>
-  </div>
-
-  <div class="card-and-title">
-    <h3>concessionary Fare</h3>
-    <div class="news-card news-card-orange">
-      <div class="news-card-column-1 card-media">
-        <img src="images/stageCoachShot.png" alt="" />
-      </div>
-
-      <div class="news-card-column-2">
-        <div class="meta">
-          <a class="meta-author meta-orange" href="">Mark Sheldon</a>
-          <a class="meta-date meta-orange" href="">14 April 2025</a>
-        </div>
-
-        <h5>Where does it come from?</h5>
-        <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text.
-        </p>
-        <a href="#">Learn More </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- END of feature -->
+<!-- END of News Cards -->
 
 <!-- Related Pages -->
 <div class="related-pages-section">
@@ -160,3 +89,71 @@
   </div>
 </div>
 <!-- END of content for this element-->
+
+/* News Cards */ .news-cards-container { display: flex; justify-content:
+space-between; } .news-card { max-width: 350px; background: var(--color-white);
+height: 494px; Display: flex; flex-direction: column; } .news-card-column-2 {
+margin: 1em 1em 0 1em; display: flex; flex-direction: column; flex: 1; /* take
+remaining height in the card */ padding-bottom: 1em; /* space from bottom edge
+*/ } /* Learn More link styles (both structures) */ .news-card .news-card-text >
+a, .news-card .news-card-column-2 > a { margin-top: auto; color:
+var(--color-black); font-size: 16px; font-weight: 700; text-decoration-line:
+underline; /* avoid shorthand so color sticks */ text-decoration-color:
+var(--color-black); text-decoration-thickness: 2px; text-underline-offset: 3px;
+} .news-card .news-card-text > a:hover, .news-card .news-card-column-2 > a:hover
+{ text-decoration-color: var(--color-brand-orange); } .meta { font-size: 16px;
+display: flex; justify-content: space-around; margin-bottom: 1em; } .meta > a {
+text-decoration: none; padding: 0.25em 0.5em; color: var(--color-black) }
+.meta-yellow { background-color: #F3AB2E26; } .meta-teal { background-color:
+#00465026; } .meta-orange { background-color: #F1532D26; } /* CARDS SHARED */
+.small-card-yellow, .news-card-yellow { border-bottom: 4px solid
+var(--color-brand-yellow); } .small-card-teal, .news-card-teal { border-bottom:
+4px solid var(--color-brand-teal); } .small-card-orange, .news-card-orange {
+border-bottom: 4px solid var(--color-brand-orange); } .small-card-yellow:hover,
+.news-card-yellow:hover { background: var(--color-brand-yellow); transition:
+background-color 0.4s ease; } .small-card-teal:hover, .news-card-teal:hover {
+background: var(--color-brand-teal); transition: background-color 0.4s ease;
+color: var(--color-white) } /* Teal cards: force all text to white on hover */
+.small-card-teal:hover, .small-card-teal:hover * { color: var(--color-white); }
+/* News teal card: make all text white on hover... */ .news-card-teal:hover,
+.news-card-teal:hover * { color: var(--color-white); } /* ...but keep the META
+area (author/date pills) dark/legible */ .news-card-teal:hover .meta,
+.news-card-teal:hover .meta a { color: var(--color-black); } /* Ensure the Learn
+More link in teal cards stays white and its underline matches the text */
+.news-card-teal:hover .news-card-text > a, .news-card-teal:hover
+.news-card-column-2 > a { color: var(--color-white); text-decoration-color:
+currentColor; /* underline follows text colour */ } .small-card-orange:hover,
+.news-card-orange:hover { background: var(--color-brand-orange); } /* meta on
+hover */ .news-card-teal:hover .meta-teal { background: rgba(0, 70, 80, 0.3);
+transition: background-color 0.3s ease; } .news-card-yellow:hover .meta-yellow {
+background: rgba(255, 255, 255, 0.3); transition: background-color 0.3s ease; }
+.news-card-orange:hover .meta-orange { background: rgba(255, 255, 255, 0.3);
+transition: background-color 0.3s ease; } /* Add the > via CSS */ .news-card
+.news-card-text > a::after, .news-card .news-card-column-2 > a::after { content:
+">"; display: inline-block; margin-left: 0.5em; transition: transform 0.2s ease;
+text-decoration: none; font-size: 18px; } /* Nudge the > on hover */ .news-card
+.news-card-text > a:hover::after, .news-card .news-card-column-2 >
+a:hover::after { transform: translateX(3px); } @media (max-width: 400px) {
+.cards { flex-direction: column; margin: 0 1em 0 1em; } .small-card-container {
+margin: 1em 0 1em 0; } } /* related pages SECTION */ .related-pages-header {
+display: flex; align-items: center; gap: 1em; margin-bottom: 2em; }
+.related-pages-header .icon { width: 88px; height: 88px; padding: 1em;
+border-radius: 50%; background: var(--color-brand-teal); display: grid;
+place-items: center; flex: 0 0 88px; fill: var(--color-white) }
+.related-pages-header h3 { margin: 0; /* remove default gaps */ white-space:
+nowrap; /* keep on one line */ } /* Line that fills remaining space */
+.related-pages-header > hr { flex: 1 1 auto; /* stretch across row */ height:
+5px; background-color: var(--color-brand-teal); border: 0; margin: 0 0 0 1rem;
+/* space after title */ } /* DISCOVER MORE SECTION */ .discover-more-header {
+display: flex; align-items: center; gap: 2em; margin-bottom: 0; }
+.discover-more-header .icon { width: 88px; height: 88px; padding: 1em;
+border-radius: 50%; background: var(--color-brand-yellow); display: grid;
+place-items: center; flex: 0 0 88px; fill: var(--color-black); }
+.discover-moreheader h3 { margin: 0; /* remove default gaps */ white-space:
+nowrap; /* keep on one line */ } /* Line that fills remaining space */
+.discover-more-header > hr { flex: 1 1 auto; /* stretch across row */ height:
+5px; background-color: var(--color-brand-yellow); border: 0; margin: 0 0 0 1rem;
+/* space after title */ } @media (max-width: 400px) { .related-pages-header,
+.discover-more-header { flex-direction: column; margin: 2em 1em 1em 1em;
+white-space: wrap; gap: 0.75em; } .discover-more-header > hr,
+.related-pages-header > hr { width: 100%; margin: 0; } }
