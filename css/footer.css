@@ -12,10 +12,11 @@ footer {
     max-width: 1320px;
     margin-left: auto;
     margin-right: auto;   
-    padding: 1em; 
+    padding: 2em; 
 
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .logos { 
@@ -79,7 +80,7 @@ footer {
 @media (max-width: 895px) {
 
     footer { 
-        height: 100%; 
+        height: auto; 
     }
 
     .footer-container {

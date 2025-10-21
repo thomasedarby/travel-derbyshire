@@ -58,6 +58,7 @@ overflow: hidden;
   gap: 1em; 
   justify-content: space-around; 
   flex-wrap: wrap;
+  padding-bottom: 2rem;
 }
 
 .news-card { 
@@ -216,4 +217,100 @@ overflow: hidden;
     .news-cards-container, .cards { 
         margin: 0 1rem; 
     }
+}
+
+
+
+/* related pages SECTION */
+
+.related-pages-header { 
+  display: flex; 
+  align-items: center; 
+  gap: 1em; 
+  margin:0 2rem 0 1rem;
+
+}
+
+.related-pages-header .icon {
+  width: 88px;
+  height: 88px;
+  padding: 1em; 
+  border-radius: 50%;
+  background: var(--color-brand-teal);
+
+  display: grid;
+  place-items: center;
+  flex: 0 0 88px;
+  fill: var(--color-white)
+}
+
+.related-pages-header h3 {
+  margin: 0;                 /* remove default gaps */
+  white-space: nowrap;       /* keep on one line */
+}
+
+
+/* Line that fills remaining space */
+.related-pages-header > hr { 
+  flex: 1 1 auto;            /* stretch across row */
+  height: 5px;
+  background-color: var(--color-brand-teal);
+  border: 0;
+  margin: 0 0 0 1rem;        /* space after title */
+}
+
+
+/* DISCOVER MORE SECTION */
+
+.discover-more-header { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-around;
+  gap: 2em; 
+  margin:0 2rem 0 1rem;
+}
+
+.discover-more-header .icon {
+  width: 88px;
+  height: 88px;
+  padding: 1em; 
+  border-radius: 50%;
+  background: var(--color-brand-yellow);
+
+  display: grid;
+  place-items: center;
+  flex: 0 0 88px;
+  fill: var(--color-black);
+}
+
+.discover-moreheader h3 {
+  margin: 0;                 /* remove default gaps */
+  white-space: nowrap;       /* keep on one line */
+}
+
+
+/* Line that fills remaining space */
+.discover-more-header > hr { 
+  flex: 1 1 auto;            /* stretch across row */
+  height: 5px;
+  background-color: var(--color-brand-yellow);
+  border: 0;
+  margin: 0 0 0 1rem;        /* space after title */
+}
+
+@media (max-width: 768px) {
+.related-pages-header, .discover-more-header { 
+  flex-direction: column; 
+  margin: 2em 1em 1em 1em; 
+  white-space: wrap; 
+  gap: 0.75em; 
+}
+
+.discover-more-header > hr, .related-pages-header > hr { 
+  width: 100%; 
+  margin: 0; 
+
+}
+
+
 }
