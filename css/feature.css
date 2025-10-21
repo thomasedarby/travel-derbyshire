@@ -75,7 +75,7 @@
   grid-area: stack;
   position: relative;
   width: 480px;
-  max-height: 571px;
+  height: 591px;
   object-fit: cover;
   display: block;
   z-index: 1;
@@ -88,33 +88,79 @@
    Stack the layout and relax heights on small screens
    ----------------------------- */
 @media (max-width: 900px) {
+  /* stack layout and name areas (visual then copy) */
   .feature__inner {
-    grid-template-columns: 1fr; /* stack */
+    grid-template-columns: 1fr;
     min-height: 0;
-     grid-template-areas:
+    grid-template-areas:
       "visual"
       "copy";
   }
+
+  /* fluid sizing for visual wrapper */
   .feature__visual {
-    width: 100%;
-    height: auto; /* allow intrinsic height below */
-    aspect-ratio: 480 / 591; /* maintain proportion when width changes */
+    /* maintain desktop aspect ratio 480 x 591 */
+    --ar: calc(591 / 480);
+    --w: clamp(300px, 92vw, 480px);            /* smooth scale 375–900px */
+    --peek: clamp(16px, calc(var(--w) * 0.08), 64px);
+
+    width: var(--w);
+    height: calc(var(--w) * var(--ar));
+    aspect-ratio: auto; /* override earlier aspect-ratio */
     justify-items: center;
     grid-area: visual;
   }
-  .feature__block {
-    width: 258px;
-    height: 409px; 
-    transform: translateX(80px);
-  }
+
+  /* image fills the wrapper */
   .feature__image {
-    max-width: 335px;
-    max-height: 329px;
+    width: var(--w);
+    height: calc(var(--w) * var(--ar));
+    object-fit: cover;
   }
 
-
-  .feature__copy {
-    grid-area: copy;
+  /* teal block scales with the same height and proportional width (380/480) */
+  .feature__block {
+    width: calc(var(--w) * 0.7916667);       /* 380/480 */
+    height: calc(var(--w) * var(--ar));
+    transform: translateX(var(--peek));      /* peek to the right */
   }
 
+  /* reverse variant: peek to the left */
+  .featured--reverse .feature__block {
+    transform: translateX(calc(var(--peek) * -1));
+  }
+
+  .feature__copy { grid-area: copy; }
+}
+
+
+
+/* --- Reverse variant: image+block on the left, text on the right --- */
+.featured--reverse .feature__inner {
+  grid-template-columns: 480px 1fr;        /* visual first, copy second */
+  grid-template-areas: "visual copy";      /* explicit placement overrides DOM order */
+}
+
+.featured--reverse .feature__visual {
+  grid-area: visual;                        /* place visual in col 1 */
+  justify-items: start;                     /* align block+image to left edge */
+}
+
+.featured--reverse .feature__copy {
+  grid-area: copy;                          /* place copy in col 2 */
+}
+
+/* make the teal block peek on the left when reversed */
+.featured--reverse .feature__block {
+  transform: translateX(-64px);
+}
+
+/* responsive: stack with visual first, then copy */
+@media (max-width: 900px) {
+  .featured--reverse .feature__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "visual"
+      "copy";
+  }
 }
