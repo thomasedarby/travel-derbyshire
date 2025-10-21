@@ -1,1 +1,220 @@
 small-cards.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Derbyshire Homepage</title>
+    <link rel="stylesheet" href="css/utilities/reset.css" />
+    <link rel="stylesheet" href="css/utilities/variables.css" />
+    <link rel="stylesheet" href="css/utilities/base-styles.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+
+    <!-- styles for this component-->
+    <link rel="stylesheet" href="css/hero.css" />
+    <!-- styles for this component-->
+
+    <script src="js/header.js" defer></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- HEADER & NAVIGATION (desktop + mobile drawer) -->
+    <header class="td-header" role="banner">
+      <div class="td-header__bar">
+        <div class="td-header__spacer" aria-hidden="true"></div>
+        <!-- Mobile toggle (hidden on desktop) -->
+        <button
+          class="td-menu-toggle"
+          aria-controls="td-mobile-drawer"
+          aria-expanded="false"
+          type="button"
+        >
+          <span class="td-menu-toggle__icon" aria-hidden="true">
+            <span class="bar bar1"></span>
+            <span class="bar bar2"></span>
+            <span class="bar bar3"></span>
+          </span>
+          <span class="td-menu-toggle__label">Menu</span>
+        </button>
+
+        <!-- Primary nav (desktop only; hides at <=1084px) -->
+        <nav class="td-nav td-nav--desktop" aria-label="Primary">
+          <ul class="td-nav__list">
+            <li class="td-has-sub">
+              <button
+                class="td-nav__trigger"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                Tickets &amp; Fares
+              </button>
+              <div class="td-submenu-popover" role="menu">
+                <ul class="td-submenu-list">
+                  <li><a href="#">Buying Your Ticket</a></li>
+                  <li><a href="#">19–21 year old discount travel</a></li>
+                  <li><a href="#">Concessions</a></li>
+                  <li><a href="#">Employee Discount Travel Scheme</a></li>
+                  <li><a href="#">Multi-Trip Tickets</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href="#">Plan your Journey</a></li>
+            <li><a href="#">On-Demand Services</a></li>
+            <li class="td-has-sub">
+              <button
+                class="td-nav__trigger"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                FAQ’s
+              </button>
+              <div class="td-submenu-popover" role="menu">
+                <ul class="td-submenu-list">
+                  <li><a href="#">Popular Questions</a></li>
+                  <li><a href="#">Contact Support</a></li>
+                </ul>
+              </div>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="td-has-sub td-align-right">
+              <button
+                class="td-nav__trigger"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                Future Projects
+              </button>
+              <div class="td-submenu-popover" role="menu">
+                <ul class="td-submenu-list">
+                  <li><a href="#">Project One</a></li>
+                  <li><a href="#">Project Two</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button class="td-header__icon-btn" aria-label="Open site search">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+                  />
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Brand (flush right; never shrinks) -->
+        <a href="#" class="td-header__brand" aria-label="Travel Derbyshire">
+          <img src="images/logo.svg" alt="" />
+        </a>
+      </div>
+
+      <!-- Mobile drawer nav (slides from beneath header) -->
+      <nav class="td-mobile-drawer" id="td-mobile-drawer" aria-label="Mobile">
+        <ul class="td-mobile-menu">
+          <li>
+            <details class="td-accordion">
+              <summary>Tickets &amp; Fares</summary>
+              <ul class="td-submenu">
+                <li><a href="#">Buying Your Ticket</a></li>
+                <li><a href="#">19–21 year old discount travel</a></li>
+                <li><a href="#">Under 19’s Travel</a></li>
+                <li><a href="#">Concessions</a></li>
+                <li><a href="#">Employee Discount Travel Scheme</a></li>
+                <li><a href="#">Multi-Trip Ticket</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="#">Plan your Journey</a></li>
+          <li><a href="#">On-Demand services</a></li>
+          <li>
+            <details class="td-accordion">
+              <summary>FAQ’s</summary>
+              <ul class="td-submenu">
+                <li><a href="#">Popular Questions</a></li>
+                <li><a href="#">Contact Support</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li>
+            <details class="td-accordion">
+              <summary>Future Projects</summary>
+              <ul class="td-submenu">
+                <li><a href="#">Project One</a></li>
+                <li><a href="#">Project Two</a></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- CContent for this element-->
+    <div class="" style="height: 80vh; width: 100%"></div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="left-list">
+          <div class="logos">
+            <img class="travel-derbyshire" src="images/logo.svg" alt="" />
+            <img class="funded" src="images/funded.png" alt="" />
+          </div>
+          <p>
+            &copy; <span id="copyright-year">2025</span> Derbyshire County
+            Council
+          </p>
+          <script>
+            // Replace with the actual current year
+            (function () {
+              var el = document.getElementById('copyright-year');
+              if (el) el.textContent = new Date().getFullYear();
+            })();
+          </script>
+          <div class="copyright"></div>
+        </div>
+        <div class="link-list-1 link-list">
+          <ul>
+            <li class="list-item"><a href="#">Privacy Policy</a></li>
+            <li class="list-item"><a href="#">Cookie Policy</a></li>
+            <li class="list-item"><a href="#">Accessibility Statement</a></li>
+          </ul>
+        </div>
+        <div class="right-list">
+          <div class="link-list-2 link-list">
+            <ul>
+              <li class="list-item"><a href="#">Contact</a></li>
+              <li class="list-item"><a href="#">Report a service Issue</a></li>
+            </ul>
+          </div>
+          <div class="socials">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+              <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 440 146.7 540.8 258.2 568.5L258.2 398.2L205.4 398.2L205.4 320L258.2 320L258.2 286.3C258.2 199.2 297.6 158.8 383.2 158.8C399.4 158.8 427.4 162 438.9 165.2L438.9 236C432.9 235.4 422.4 235 409.3 235C367.3 235 351.1 250.9 351.1 292.2L351.1 320L434.7 320L420.3 398.2L351 398.2L351 574.1C477.8 558.8 576 450.9 576 320z"
+              />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+              <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M512 96L127.9 96C110.3 96 96 110.5 96 128.3L96 511.7C96 529.5 110.3 544 127.9 544L512 544C529.6 544 544 529.5 544 511.7L544 128.3C544 110.5 529.6 96 512 96zM231.4 480L165 480L165 266.2L231.5 266.2L231.5 480L231.4 480zM198.2 160C219.5 160 236.7 177.2 236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160zM480.3 480L413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
