@@ -1,0 +1,446 @@
+
+/* =====================================================================
+    Header
+   - Desktop uses a 3-column grid: [burger] [primary nav] [brand/logo]
+   - Brand (right column) never shrinks; middle column flexes
+   - <=1084px: desktop nav hides; burger controls sliding drawer
+   - Animations respect prefers-reduced-motion
+   ===================================================================== */
+
+/* Global header height (controls brand size + drawer anchor position) */
+:root {
+  --td-header-h: 98px; 
+}
+
+/* ------------------------------
+   Header shell
+   ------------------------------ */
+.td-header {
+  width: 100%;
+  background: var(--color-brand-orange);
+  color: var(--color-black);
+  /* Prevent 1px hairlines when zooming/resizing */
+  overflow: visible; 
+}
+
+/* ------------------------------
+   Header bar (desktop layout)
+   Grid columns:  auto 1fr max-content  →  [burger] [nav] [brand]
+   The brand column is max-content so it never shrinks; the middle
+   column absorbs width changes between 1500px and the mobile breakpoint.
+   ------------------------------ */
+.td-header__bar {
+  position: relative;
+  height: var(--td-header-h);
+  display: grid;
+  grid-template-columns: auto 1fr max-content; 
+  align-items: center;
+  column-gap: 0px;
+  padding-left: 24px;   /* slight left inset for burger */
+  padding-right: 0;     /* flush to the right edge for logo */
+  overflow: visible;     /* clip any sub-pixel artefacts from the logo art */
+}
+
+
+/* ------------------------------
+   Brand (right column)
+   ------------------------------ */
+
+.td-header__brand {
+  position: static;
+  height: var(--td-header-h);
+  display: flex;                 /* stretch and use flex to push image to edge */
+  justify-self: stretch;         /* take full width of the right grid column */
+  align-items: stretch;
+  margin: 0;
+  line-height: 0;                 /* remove inline-image baseline gap */
+  background: var(--color-brand-orange); /* mask hairlines under the SVG */
+  align-self: stretch;            /* fill header bar height */
+  white-space: nowrap;            /* prevent wrapping/shrinking */
+}
+.td-header__brand img {
+  height: 100%;                  /* match bar height */
+  width: auto;
+  display: block;
+  margin-left: auto;             /* pin graphic to the right edge */
+}
+
+
+/* Left spacer (desktop only): matches brand width to truly centre nav */
+.td-header__spacer { display: block; width: 0; height: 1px; }
+@media (max-width: 1409px) { .td-header__spacer { display: none; } }
+
+/* Desktop dropdowns */
+.td-nav__list > li { position: relative; }
+
+/* Trigger for items with submenu */
+.td-nav__trigger {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--color-black);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.td-has-sub > .td-nav__trigger::after {
+  content: "▾";
+  line-height: 1;
+  transform: translateY(1px);
+  transition: transform .2s ease;
+}
+.td-has-sub:hover > .td-nav__trigger::after,
+.td-has-sub:focus-within > .td-nav__trigger::after {
+  transform: translateY(1px) rotate(180deg);
+}
+
+/* Popover panel */
+.td-submenu-popover {
+  position: absolute;
+  left: 0;
+  right: auto;                 /* default: anchor left */
+  top: calc(100% + 14px);
+  background: var(--color-brand-yellow);
+  padding: 24px 28px;
+  width: min(520px, calc(100vw - 32px)); /* never push page wider than viewport */
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  display: none;               /* prevent hidden popovers from affecting layout/scroll */
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 1200;
+}
+.td-has-sub:hover .td-submenu-popover,
+.td-has-sub:focus-within .td-submenu-popover,
+.td-has-sub.is-open .td-submenu-popover {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+/* Right-align popover for right-edge items (prevents horizontal overflow) */
+.td-has-sub.td-align-right .td-submenu-popover { left: auto; right: 0; }
+
+.td-submenu-list { list-style: none; margin: 0; padding: 0; }
+.td-submenu-list li + li { margin-top: 14px; }
+.td-submenu-list a {
+  display: block;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--color-black);
+  text-decoration: none;
+}
+
+
+.td-submenu-list > li:hover { 
+  text-decoration: underline;
+  text-decoration-color: var(--color-black);
+  text-underline-offset: 4px;
+}
+
+/* ------------------------------
+   Desktop primary nav
+   ------------------------------ */
+
+/* allow flexing */
+.td-nav--desktop { 
+  display: block;
+}
+.td-nav--desktop { display: block; min-width: 0; justify-self: center; }
+.td-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.td-nav__list a {
+  color: var(--color-black);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.td-nav__list a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-brand-yellow);
+  text-underline-offset: 3px;
+}
+
+/* Accessible focus */
+.td-nav__list a:focus-visible,
+.td-menu-toggle:focus-visible,
+.td-mobile-menu a:focus-visible,
+.td-mobile-menu summary:focus-visible {
+  outline: 3px solid var(--color-brand-yellow);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Search icon button */
+.td-header__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+
+.td-header__icon-btn svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  fill: var(--color-black);
+}
+
+/* ------------------------------
+   Mobile toggle (burger → cross)
+   ------------------------------ */
+.td-menu-toggle {
+  display: none; /* only shows at <=1084px */
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: var(--color-black);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.td-menu-toggle__label { font-weight: 700; }
+
+.td-menu-toggle__icon {
+  position: relative;
+  width: 24px;
+  height: 18px;
+  display: inline-block;
+}
+.td-menu-toggle__icon .bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: currentColor;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.bar1 { top: 0; }
+.bar2 { top: 7.5px; }
+.bar3 { bottom: 0; }
+.td-menu-toggle.is-open .bar1 { transform: translateY(7.5px) rotate(45deg); }
+.td-menu-toggle.is-open .bar2 { opacity: 0; }
+.td-menu-toggle.is-open .bar3 { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* Mobile Drawer: hidden on desktop */
+.td-mobile-drawer { 
+  display: none; 
+}
+
+/* ------------------------------
+   Desktop tightening steps
+   ------------------------------ */
+@media (max-width: 1500px) { .td-nav__list { gap: 28px; } }
+@media (max-width: 1400px) { .td-nav__list { gap: 20px; } .td-nav__list a, .td-nav__trigger { font-size: 15px; } }
+@media (max-width: 1320px) { .td-nav__list { gap: 16px; } .td-nav__list a, .td-nav__trigger { font-size: 14.5px; } }
+@media (max-width: 1250px) { .td-nav__list { gap: 1em; } }
+@media (max-width: 1122px) { .td-nav__list { gap: 0.75em; } }
+@media (max-width: 428px){ .td-header { overflow: hidden; } }
+
+
+/* ------------------------------
+   Mobile drawer nav (<=1084px)
+   ------------------------------ */
+@media (max-width: 1084px) {
+  /* Swap desktop for mobile controls */
+  .td-nav--desktop { display: none; }
+  .td-menu-toggle { display: inline-flex; }
+
+
+  /* Drawer container: slides from beneath the header */
+  .td-mobile-drawer {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: var(--td-header-h);       /* anchors exactly below header */
+  width: 100%;
+  max-height: 0;                 /* animated Property */
+  overflow: hidden;              /* Hide while animating */
+  background: var(--color-brand-orange);
+  color: var(--color-black);
+  opacity: 0;
+  transform: translateY(-24px);  /* bigger drop for a stronger slide */
+  pointer-events: none;
+  transition:
+    max-height .55s cubic-bezier(.22,1,.36,1),
+    opacity    .40s ease-out,
+    transform  .55s cubic-bezier(.22,1,.36,1);
+  will-change: max-height, transform, opacity;
+  z-index: 1000;
+  padding: 24px;
+  }
+
+  .td-mobile-drawer.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  overflow: auto;                /* scrollable when open */
+  }
+
+   /* Lock scroll when drawer open */
+  body.td-no-scroll { overflow: hidden; }
+
+  /* Mobile menu list */
+  .td-mobile-menu,
+  .td-mobile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+
+/* Burger toggle: hidden on desktop */
+.td-menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: var(--color-black);
+}
+.td-menu-toggle__label { font-weight: 700; }
+
+/* ===== Responsive tweaks ===== */
+
+/* tighten spacing before mobile to avoid brand overlap */
+@media (max-width: 1500px) {
+  .td-nav__list { gap: 28px; }
+}
+@media (max-width: 1400px) {
+  .td-nav__list { gap: 20px; }
+  .td-nav__list a { font-size: 15px; }
+}
+@media (max-width: 1320px) {
+  .td-nav__list { gap: 16px; }
+  .td-nav__list a { font-size: 14.5px; }
+}
+
+@media (max-width: 1250px) {
+  .td-header__bar { justify-content: space-around; }
+  .td-nav__list { gap: 1em; }
+}
+
+@media (max-width: 1122px) {
+  .td-nav__list { gap: 0.75em; }
+}
+
+@media (max-width: 1084px) {
+  .td-nav--desktop { display: none; }
+  .td-menu-toggle { display: inline-flex; }
+
+  /* Drawer (slides down & expands) */
+  /* Drawer (slides down & expands smoothly) */
+  .td-mobile-drawer.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    overflow: auto;                /* allow scrolling when open */
+  }
+
+
+
+
+  /* Top-level items (links & headings) */
+  .td-mobile-menu a,
+  .td-mobile-menu summary {
+    display: block;
+    padding: 16px 0;
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--color-black);
+    text-decoration: none;
+  }
+  .td-mobile-menu a:hover,
+  .td-mobile-menu summary:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-brand-yellow);
+    text-underline-offset: 3px;
+  }
+
+  /* Submenus panel (the <ul>) is what should animate, not the links */
+  .td-submenu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height .45s cubic-bezier(.22,1,.36,1),
+      opacity    .35s ease-out;
+    will-change: max-height, opacity;
+    margin: 0;
+    padding: 0; /* left indent handled on links */
+  }
+  .td-submenu li a {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 0 12px 12px;
+  }
+
+  /* When the <details> is open, let it expand */
+  .td-accordion[open] > .td-submenu {
+    /* Choose a cap that exceeds your largest submenu height */
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  /* Remove default disclosure triangle, add our own */
+  .td-mobile-menu summary { list-style: none; }
+  .td-mobile-menu summary::-webkit-details-marker { display: none; }
+  .td-mobile-menu summary::after {
+    content: "▾";
+    float: right;
+    transform: translateY(2px);
+  }
+  .td-mobile-menu details[open] > summary::after { content: "▴"; }
+}
+
+    @media (max-width: 1084px) {
+        .td-mobile-menu > li {
+  border: none!important; 
+ }
+}
+
+/* ------------------------------
+   Motion safety
+   ------------------------------ */
+  @media (prefers-reduced-motion: reduce) {
+    .td-mobile-drawer,
+    .td-submenu,
+    .td-menu-toggle__icon .bar {
+    transition: none !important;
+    }
+  }
+}

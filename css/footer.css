@@ -1,0 +1,118 @@
+footer { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-around;
+    background: #F8F8F8;
+    height: 271px; 
+    flex-wrap: wrap; 
+}
+
+.footer-container { 
+    width: 100%;
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;   
+    padding: 1em; 
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.logos { 
+    display: flex; 
+    align-items: center;
+}
+
+.travel-derbyshire { 
+    max-width: 167px; 
+    height: auto; 
+    margin-right: 1em; 
+}
+
+.funded { 
+
+    max-width: 178px; 
+    max-height: 32px;
+}
+
+.socials { 
+    margin-top: 1em; 
+    display: flex; 
+    justify-content: space-between;
+}
+
+.socials > svg { 
+    height: 24px; 
+    width: 24px; 
+    fill: var(--color-black);
+}
+
+.socials > svg:hover { 
+    fill: var(--color-brand-orange);
+    transition: fill 0.4s ease;
+}
+
+.link-list > ul { 
+    text-transform: capitalize; 
+    list-style: none;
+}
+
+.list-item { 
+        margin-top: 1em; 
+}
+
+.list-item > a { 
+    color: var(--color-black);
+    text-decoration: none;
+
+}
+
+.list-item > a:hover { 
+    color: var(--color-black);
+    text-decoration: underline;
+    text-decoration-color: var(--color-brand-orange);
+    text-underline-offset: 3px;
+
+}
+
+
+@media (max-width: 895px) {
+
+    footer { 
+        height: 100%; 
+    }
+
+    .footer-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .socials { 
+        justify-content: flex-start;
+    }
+
+    .footer-container > div {
+        flex: 1 1 50%; /* two columns */
+    }
+
+    .footer-container > div:nth-child(3) {
+        flex: 1 1 100%; /* third column drops below */
+    }
+}
+
+
+@media (max-width: 398px) {
+    .logos { 
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+
+    .logos > img { 
+        margin-bottom: 1em; 
+    }
+
+    footer { 
+        height: auto; 
+        padding-bottom: 1em; 
+    }
+ }

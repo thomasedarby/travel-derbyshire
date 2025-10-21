@@ -1,0 +1,135 @@
+
+/* ================================
+   Base Styles
+   ================================ */
+
+html {
+  font-family: "Barlow", sans-serif;
+  font-size: 23px; /* set your root size */
+}
+
+h1 { 
+  font-size: 49px;
+  font-weight: 700;
+  line-height: 60px;
+  color: var(--color-black);
+  text-transform: capitalize;
+}
+
+h2 { 
+  font-size: 33px;
+  font-weight: 700;
+  line-height: 36px;
+  color: var(--color-black);
+  margin-bottom: 1em;
+  text-transform: capitalize;
+}
+
+h3 { 
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+  color: var(--color-black);
+  margin-bottom: 1em;
+  margin-top: 1em; 
+  text-transform: capitalize;
+}
+
+h4 { 
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  color: var(--color-black);
+  margin-bottom: 0.5em;
+}
+
+h5 { 
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-black);
+  margin-bottom: 1em;
+}
+
+h6 { 
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-black);
+  margin-bottom: 1em;
+}
+
+p { font-size: 23px; 
+    font-weight: 400; 
+  }
+
+/* Tablet */
+@media (max-width: 1320px) {
+
+  h1 { font-size: 47px; }
+
+  h2 { font-size: 31px;}
+
+  h3 { font-size: 26px; }
+
+  h4 { font-size: 22px; }
+
+  h5 { font-size: 19px; }
+
+  h6 { font-size: 18px; }
+  
+  p { font-size: 22px; }
+  }
+
+/* Mobile */
+
+@media (max-width: 1319px) {
+
+  h1 { font-size: 45px; }
+
+  h2 { font-size: 28px;}
+
+  h3 { font-size: 24px; }
+
+  h4 { font-size: 20px; }
+
+  h5 { font-size: 18px; }
+
+  h6 { font-size: 18px; }
+  
+  p { }
+  
+}
+
+
+
+body p { 
+  font-size: 21px;
+  font-weight: 400; 
+  line-height: 29px;
+}
+
+
+body { 
+    background: var(--color-secondary-grey);
+    
+}
+
+.site-container {
+    width: 100%;
+    max-width: 1320px;
+    min-height: 1000px;
+    margin-left: auto;
+    margin-right: auto;   
+     
+}
+
+
+/* @media (max-width: 585px) {
+.site-container { 
+  max-width: 400px;
+  overflow: hidden; 
+  
+}
+
+} */

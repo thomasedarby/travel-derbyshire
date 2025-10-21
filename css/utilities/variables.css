@@ -1,0 +1,32 @@
+
+/* ================================
+   Colour Variables
+   ================================ */
+:root { 
+     /* Brand Colours */
+  --color-brand-orange: #F1532D;
+  --color-brand-teal: #028485;
+  --color-brand-yellow: #F3AB2E;
+
+  /* Secondary Brand Colours */
+  --color-secondary-blue: #0043A5;
+  --color-secondary-grey: #F2EDDF;
+  --color-secondary-pink: #EA83D4;
+
+  /* Neutrals */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-in-focus: #903E94;
+  --color-neutral-100: #F2F5F5;
+  --color-neutral-200: #E5EAEB;
+  --color-neutral-300: #BDCBCC;
+  --color-neutral-400: #AAB8B8;
+  --color-neutral-500: #869190;
+  --color-neutral-600: #636A6A;
+  --color-neutral-700: #383A38;
+
+  /* Notifications */
+  --color-success: #459113;
+  --color-warning: #F3B109;
+  --color-error: #E31005;
+}
