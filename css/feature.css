@@ -1,0 +1,120 @@
+/* ===============================
+   Feature Section (grid + overlay)
+   Layout based on provided dims:
+   - Section: 1110px x 591px (fits container)
+   - Coloured block: 380px x 591px
+   - Image: 480px wide (same height as block)
+   =============================== */
+
+.featured {
+  /* centers the component within the page container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2em; 
+  padding: 24px 0; /* breathing space on small screens */
+}
+
+/* Inner grid: text on the left, visual on the right */
+.feature__inner {
+  width: min(100%, 1110px);
+  min-height: 591px; /* match the design height */
+  display: grid;
+  grid-template-columns: 1fr 480px; /* text grows, visual fixed to image width */
+  gap: clamp(16px, 4vw, 48px);
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* --- Copy column --- */
+.feature__copy {
+  max-width: 56ch; /* nice readable width */
+}
+
+.feature__copy h2 {
+  font-size: clamp(1.75rem, 2.5vw + 0.5rem, 3rem);
+  line-height: 1.1;
+  margin: 0 0 16px 0;
+}
+
+.feature__copy p {
+  margin: 0 0 1em 0;
+}
+
+.feature__link {
+  text-underline-offset: 3px;
+}
+
+/* --- Visual column: block + overlaid image --- */
+.feature__visual {
+  position: relative;
+  width: 480px;   /* image width */
+  height: 591px;  /* fixed height from design */
+  isolation: isolate;
+  display: grid;
+  grid-template-areas: 'stack';
+  align-items: center;
+  justify-items: end;
+}
+
+/* Coloured block behind the image */
+.feature__block {
+  grid-area: stack;
+  position: relative;
+  width: 380px;
+  height: 591px;
+  background: var(--color-brand-teal);
+  z-index: 0;
+  transform: translateX(64px); /* peek out to the right while remaining vertically centered */
+}
+
+/* Foreground image overlapping the block */
+.feature__image {
+  grid-area: stack;
+  position: relative;
+  width: 480px;
+  max-height: 571px;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+
+
+/* -----------------------------
+   Responsive tweaks
+   Stack the layout and relax heights on small screens
+   ----------------------------- */
+@media (max-width: 900px) {
+  .feature__inner {
+    grid-template-columns: 1fr; /* stack */
+    min-height: 0;
+     grid-template-areas:
+      "visual"
+      "copy";
+  }
+  .feature__visual {
+    width: 100%;
+    height: auto; /* allow intrinsic height below */
+    aspect-ratio: 480 / 591; /* maintain proportion when width changes */
+    justify-items: center;
+    grid-area: visual;
+  }
+  .feature__block {
+    width: 258px;
+    height: 409px; 
+    transform: translateX(80px);
+  }
+  .feature__image {
+    max-width: 335px;
+    max-height: 329px;
+  }
+
+
+  .feature__copy {
+    grid-area: copy;
+  }
+
+}
