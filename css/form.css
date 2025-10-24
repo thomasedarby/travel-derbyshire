@@ -1,3 +1,22 @@
 section { 
     margin: 4rem 0 4rem 0; 
 }
+
+.contact-options { 
+    display: flex; 
+    border: none; 
+
+}
+
+.option-card {
+    background: var(--color-white);
+    margin: 1rem; 
+    padding: 2rem;
+    display: flex; 
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.option-card  > input { 
+    margin: 0 1rem 1rem 1rem;
+}
