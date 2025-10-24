@@ -1,5 +1,5 @@
 section { 
-    margin: 4rem 0 4rem 0; 
+    margin: 4rem 2rem; 
 }
 
 .contact-options { 
@@ -11,12 +11,82 @@ section {
 .option-card {
     background: var(--color-white);
     margin: 1rem; 
-    padding: 2rem;
+    padding: 1rem;
     display: flex; 
     justify-content: space-around;
     align-items: flex-start;
 }
 
 .option-card  > input { 
-    margin: 0 1rem 1rem 1rem;
+    margin: 0 1rem 1rem 0;
+}
+
+.option-card input[type="radio"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: var(--color-brand-orange); /* modern browsers only */
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+/* Hide the native radio */
+.option-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+/* Create a custom circle */
+.option-card input[type="radio"] + label::before,
+.option-card input[type="radio"] + .option-content::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-brand-yellow); /* unselected border colour */
+  border-radius: 50%;
+  background-color: var(--color-white); /* unselected background */
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+/* When checked */
+.option-card input[type="radio"]:checked + label::before,
+.option-card input[type="radio"]:checked + .option-content::before {
+  background-color: var(--color-brand-yellow);
+  box-shadow: inset 0 0 0 3px var(--color-white); /* white inner dot */
+}
+
+/* Optional hover/focus state */
+.option-card input[type="radio"]:focus + .option-content::before,
+.option-card:hover input[type="radio"] + .option-content::before {
+  border-color: var(--color-brand-yellow);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem; /* 20px spacing between columns/rows */
+  align-items: start;
+}
+
+/* Make inputs fill their column */
+.form-grid .form-group {
+  width: 100%;
+}
+
+.form-grid .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-grid .form-group input {
+  width: 100%;
+}
+
+/* Stack on small screens */
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
 }
