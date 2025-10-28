@@ -1,6 +1,11 @@
 section { 
     margin: 4rem auto; 
-    max-width: 80%; 
+
+}
+
+.form { 
+  max-width: 730px;
+  margin: 0 auto 2rem auto;
 }
 
 form > * { 
@@ -16,7 +21,6 @@ form > * {
     gap: 1rem;
 
 }
-
 
 .contact-options > .option-card:first-child { 
     margin-right: 1rem;
@@ -140,5 +144,183 @@ input:focus, textarea:focus {
   .name-email .form-group { 
     width: 100%; 
   }
+
+  .submit-btn { 
+    width: 100%; 
+  }
+
+}
+
+
+
+.issue-header { 
+  width: 100%;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  gap: 1rem; 
+  margin-bottom: 2rem 1rem;
+}
+
+.issue-header .icon {
+  width: 88px;
+  height: 88px;
+  padding: 1em; 
+  border-radius: 50%;
+  background: var(--color-brand-yellow);
+
+  display: grid;
+  place-items: center;
+  flex: 0 0 88px;
+  fill: var(--color-black);
+}
+
+.issue-header > hr { 
+
+  flex: 1 1 auto;           /* stretch across row */
+  height: 5px;
+  background-color: var(--color-brand-yellow);
+  border: 0;     /* space after title */
+
+}
+
+.issue-header h3 {
+  margin: 0;                 /* remove default gaps */
+  white-space: nowrap;       /* keep on one line */
+}
+
+.issue-intro { 
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 0 1rem; 
+  margin-bottom: 2rem; 
+}
+
+.issue-cards { 
+  margin: 0 auto; 
+  display: flex; 
+  justify-content: space-around;
+  max-width: 1110px;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+}
+
+.issue-card { 
+  text-align: center; 
+  background: var(--color-white);
+  min-height: 110px; 
+  width: 350px; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  border-bottom: 5px solid var(--color-black);
+  transition: background 0.3s ease, color 0.3s ease;
+  text-align: left; 
+} 
+
+.issue-card-yellow {
+  border-bottom: 5px solid var(--color-brand-yellow);
+ }
+
+.issue-card-teal { 
+  border-bottom: 5px solid var(--color-brand-teal);
+}
+
+.issue-card-orange { 
+  border-bottom: 5px solid var(--color-brand-orange);
+}
+
+.issue-card-yellow:hover {
+  background: var(--color-brand-yellow);
+ }
+
+.issue-card-teal:hover { 
+  background: var(--color-brand-teal);
+  color: var(--color-white);
+}
+
+
+.issue-card-teal:hover .issue-card-content svg path {
+  transition: fill 0.3s ease;
+  fill: var(--color-white);
+}
+
+
+.issue-card-orange:hover { 
+  background: var(--color-brand-orange);
+}
+
+
+.issue-card-content { 
+  display: flex; 
+  align-items: center;
+  margin: 0 1rem 0 1rem
+}
+
+.issue-card-content > svg { 
+  margin-left: 1rem;
+  height: 24px;
+  width: 24px;
+  flex-shrink: 0; 
+}
+
+.issue-card-text { 
+  font-size: 20px;
+  font-weight: 700;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  
+}
+
+.issue-card-text > svg { 
+  margin-left: 0.5rem;
+  height: 24px;
+  width: 24px;
+}
+
+
+
+
+
+
+@media (max-width: 850px) { 
+  .issue-header{
+    flex-direction: column;
+  }
+  .issue-header > hr { 
+    width: 100%; 
+    margin-bottom: 1rem; 
+  }
+  .issue-header > *  {
+    margin: 0; 
+  }
+} 
+
+@media (max-width: 400px) {
+  .issues-header { 
+  flex-direction: column; 
+
+  white-space: wrap; 
+  gap: 0.75em; 
+}
+
+.issue-header > hr { 
+  width: 100%; 
+  margin: 0; 
+
+}
+}
+
+@media (max-width: 728px) { 
+.form { 
+    padding: 0 1rem; 
+  }
+
+  .report-service-issue { 
+    margin: 0 1rem; 
+  }
+
 
 }

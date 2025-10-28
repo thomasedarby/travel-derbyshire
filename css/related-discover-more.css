@@ -60,7 +60,7 @@
   fill: var(--color-black);
 }
 
-.discover-moreheader h3 {
+.discover-more-header h3 {
   margin: 0;                 /* remove default gaps */
   white-space: nowrap;       /* keep on one line */
 }

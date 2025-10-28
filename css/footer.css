@@ -5,6 +5,7 @@ footer {
     background: #F8F8F8;
     height: 271px; 
     flex-wrap: wrap; 
+    margin-top: 2rem; 
 }
 
 .footer-container { 
