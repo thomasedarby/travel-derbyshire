@@ -1,24 +1,37 @@
 section { 
-    margin: 4rem 2rem; 
+    margin: 4rem auto; 
+    max-width: 80%; 
 }
 
+form > * { 
+    margin-bottom: 1rem;
+}
+
+ legend { 
+    margin-bottom: 1rem;
+}
 .contact-options { 
     display: flex; 
     border: none; 
+    gap: 2rem;
+}
 
+
+.contact-options > .option-card:first-child { 
+    margin-right: 1rem;
 }
 
 .option-card {
     background: var(--color-white);
-    margin: 1rem; 
     padding: 1rem;
     display: flex; 
     justify-content: space-around;
     align-items: flex-start;
+    border: 2px solid var(--color-white);
 }
 
-.option-card  > input { 
-    margin: 0 1rem 1rem 0;
+.option-card:hover { 
+    border: 2px solid var(--color-brand-yellow);
 }
 
 .option-card input[type="radio"] {
@@ -57,36 +70,5 @@ section {
   box-shadow: inset 0 0 0 3px var(--color-white); /* white inner dot */
 }
 
-/* Optional hover/focus state */
-.option-card input[type="radio"]:focus + .option-content::before,
-.option-card:hover input[type="radio"] + .option-content::before {
-  border-color: var(--color-brand-yellow);
-}
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem; /* 20px spacing between columns/rows */
-  align-items: start;
-}
 
-/* Make inputs fill their column */
-.form-grid .form-group {
-  width: 100%;
-}
-
-.form-grid .form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.form-grid .form-group input {
-  width: 100%;
-}
-
-/* Stack on small screens */
-@media (max-width: 640px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
