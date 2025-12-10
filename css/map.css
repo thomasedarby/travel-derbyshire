@@ -1,14 +1,41 @@
-.map-container { 
+.map-element { 
     background: var(--color-white);
     margin: 2em;
     padding: 1em 2em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 1.5rem;
+
+    display: flex; 
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 2rem; 
+
 }
+
+.additional-info{
+    display: flex; 
+    flex-direction: column;
+    gap: 1.5rem; 
+}
+.map-element > * {
+    flex-basis: 50%;
+}
+
+.town-maps p {
+    margin-top: 1rem;
+}
+
+.map-container { 
+    background: var(--color-brand-teal);
+    border-radius: 1rem;
+    padding: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 
 #derbyshire-outline { 
     fill:var(--color-brand-orange);
-    stroke: var(--color-brand-yellow);
     stroke-width: 2px;
 }
 
@@ -21,6 +48,7 @@
     fill: var(--color-black);
 }
 
+
 .hitbox {
   fill: transparent;
   stroke: none;
@@ -29,29 +57,47 @@
 
 
 /* Smooth transform for the group */
-#poi > g {
+#poi > a g {
   transform-box: fill-box;
   transform-origin: center;
 }
 
-#poi > g {
-  transition: transform 0.2s ease;
+#poi > a g {
+  transition: transform 0.2s ease-in-out;
   transform-origin: center;
 }
 
 /* Scale the whole POI group on hover */
-#poi > g:hover {
+#poi > a:hover g {
   transform: scale(1.1);
   cursor: pointer;
 }
 
 /* Only style the text + marker fill */
-#poi > g:hover text,
-#poi > g:hover path {
+#poi > a:hover g text, #poi > a:active g text { 
+    fill: var(--color-brand-yellow);
+}
+#poi > a:hover g path, #poi > a:active g path  {
   fill: var(--color-brand-teal);
 }
 
-#poi > g {
+#poi > a g {
   transform-box: fill-box;
   transform-origin: center;
+}
+
+.town-list { 
+    text-align: center
+}
+
+
+@media (max-width: 900px) {
+  .map-element {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .map-element > * {
+    flex: 1 1 100%;
+  }
 }
