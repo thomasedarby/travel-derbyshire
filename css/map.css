@@ -1,0 +1,57 @@
+.map-container { 
+    background: var(--color-white);
+    margin: 2em;
+    padding: 1em 2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 1.5rem;
+}
+
+#derbyshire-outline { 
+    fill:var(--color-brand-orange);
+    stroke: var(--color-brand-yellow);
+    stroke-width: 2px;
+}
+
+
+#poi { 
+    fill: var(--color-brand-yellow);
+}
+
+.st0 { 
+    fill: var(--color-black);
+}
+
+.hitbox {
+  fill: transparent;
+  stroke: none;
+  pointer-events: all;
+}
+
+
+/* Smooth transform for the group */
+#poi > g {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+#poi > g {
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+/* Scale the whole POI group on hover */
+#poi > g:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Only style the text + marker fill */
+#poi > g:hover text,
+#poi > g:hover path {
+  fill: var(--color-brand-teal);
+}
+
+#poi > g {
+  transform-box: fill-box;
+  transform-origin: center;
+}
