@@ -26,12 +26,15 @@
 }
 
 .map-container { 
-    background: var(--color-brand-teal);
+    background: var(--color-secondary-grey);
     border-radius: 1rem;
     padding: 1em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.map-container svg {
+  align-self: center;
+}
 
 
 #derbyshire-outline { 
@@ -75,7 +78,8 @@
 
 /* Only style the text + marker fill */
 #poi > a:hover g text, #poi > a:active g text { 
-    fill: var(--color-brand-yellow);
+    fill: var(--color-brand-teal);
+    font-weight: bold;
 }
 #poi > a:hover g path, #poi > a:active g path  {
   fill: var(--color-brand-teal);
