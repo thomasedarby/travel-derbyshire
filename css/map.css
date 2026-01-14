@@ -320,11 +320,6 @@
   font-weight: 500;
 }
 
-@media (max-width: 480px) {
-  .journey-status-key {
-    gap: 1rem;
-  }
-}
 
 /* ===== Results cards ====== */
 
@@ -344,14 +339,24 @@
   font-weight: bold;
 }
 
-@media (max-width: 810px) {
+@media (max-width: 480px) {
+  .journey-status-key {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 850px) {
   .journey-data {
     flex-direction:column;
     gap: 0.5rem; 
   }
 
-  .journey-card { 
+  .journey-main {
+    padding-top: 1rem;  
 
   }
 
+   .status-indicator { 
+    padding-top: 0.5rem;
+  }
 }
