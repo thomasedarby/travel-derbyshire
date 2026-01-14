@@ -1,14 +1,15 @@
 .map-element { 
-    background: var(--color-white);
-    margin: 2em;
-    padding: 1em 2em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 1.5rem;
-
-    display: flex; 
-    justify-content: space-around;
-    align-items: stretch;
-    gap: 2rem; 
+  /* Shared container layout for map element */
+  background: var(--color-white);
+  width: min(95%, 1200px);
+  margin: 2rem auto;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex; 
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 2rem; 
+  border-bottom: 4px solid var(--color-brand-teal);
 
 }
 
@@ -26,10 +27,8 @@
 }
 
 .map-container { 
-    background: var(--color-secondary-grey);
-    border-radius: 1rem;
+    background: var(--color-neutral-200);
     padding: 1em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .map-container svg {
@@ -38,13 +37,13 @@
 
 
 #derbyshire-outline { 
-    fill:var(--color-brand-orange);
+    fill:var(--color-brand-yellow);
     stroke-width: 2px;
 }
 
 
 #poi{ 
-    fill: var(--color-brand-yellow);
+    fill: var(--color-brand-teal);
 }
 
 .st0 { 
@@ -59,15 +58,11 @@
 }
 
 
-/* Smooth transform for the group */
+/* POI group transforms – consolidated */
 #poi > a g {
   transform-box: fill-box;
   transform-origin: center;
-}
-
-#poi > a g {
   transition: transform 0.2s ease-in-out;
-  transform-origin: center;
 }
 
 /* Scale the whole POI group on hover */
@@ -78,20 +73,33 @@
 
 /* Only style the text + marker fill */
 #poi > a:hover g text, #poi > a:active g text { 
-    fill: var(--color-brand-teal);
     font-weight: bold;
 }
-#poi > a:hover g path, #poi > a:active g path  {
-  fill: var(--color-brand-teal);
-}
 
-#poi > a g {
-  transform-box: fill-box;
-  transform-origin: center;
-}
+
+/* (duplicate removed; covered by consolidated block above) */
 
 .town-list { 
     text-align: center
+}
+
+#town-map-select { 
+  border-radius: 0.25rem; 
+  border: 2px solid var(--color-brand-teal);
+}
+
+.public-transport > ul { 
+    list-style: none;
+    padding-left: 0;
+    padding-bottom: 1rem; 
+
+}
+
+.public-transport > ul > li > a { 
+    text-decoration: none;
+    color: var(--color-black);
+    position: relative;
+    font-size: 0.8rem;
 }
 
 
@@ -104,4 +112,246 @@
   .map-element > * {
     flex: 1 1 100%;
   }
+}
+
+
+/* ===== Journey planner ===== */
+.td-journey-planner {
+  /* Journey planner container – aligned with map container */
+  width: min(95%, 1200px);
+  margin: 2rem auto;
+  background-color: var(--color-white);
+  padding: 1rem 2rem; 
+  border-bottom: 4px solid var(--color-brand-teal);
+}
+
+.td-journey-planner-search {
+  display: flex;
+  gap: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.td-journey-planner-search > label {
+  flex: 0 0 auto;     /* keep the label its natural width */
+  font-weight: 700;
+}
+
+.td-journey-planner-search > input {
+  flex: 1 1 auto;     /* let the input grow to fill the rest */
+  width: 100%;        /* ensures it spans the allotted flex width */
+  border: 2px solid var(--color-brand-teal);
+  border-radius: 0.5rem;
+  box-shadow: none;
+  outline: none;
+  padding-left: 0.5rem;
+;
+}
+
+.td-journey-autocomplete-results {
+  border-radius: 0.5rem; 
+  margin-top: 0.5rem; 
+  background-color: var(--color-white);
+  padding: 1rem;
+}
+
+.td-journey-autocomplete-results > ul { 
+  /* Reset defaults for clean list layout */
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.td-journey-autocomplete-results > ul > li { 
+  padding: 0.5rem 0.5rem; 
+  border-bottom: 1px solid var(--color-brand-yellow);
+}
+
+.td-journey-autocomplete-results > ul > li > a {
+  text-decoration: none;
+  color: var(--color-black);
+  position: relative;
+  padding-right: 1.25rem; /* room for arrow */
+}
+
+.td-journey-autocomplete-results > ul > li:has(> a:hover) {
+    background-color: var(--color-brand-yellow);
+}
+/* Item ABOVE the hovered one */
+.td-journey-autocomplete-results > ul > li:has(+ li > a:hover) {
+    border-bottom: 1px solid transparent;
+}
+
+@media (max-width: 800px) {
+  td-journey-planner-search {
+    flex-direction: column;
+    gap: 0.5rem; 
+  }
+  .td-journey-autocomplete-results > ul > li > a::after { 
+    display: none; 
+  }
+  .td-journey-planner {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+@media (max-width: 885px) {
+    .td-journey-planner {
+        max-width: 85%;
+    }
+
+    .td-journey-planner-search {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .td-journey-planner-search>* {
+        flex: 1 1 100%;
+    }
+
+    .td-journey-autocomplete-results,
+    .td-journey-autocomplete-results>ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .td-journey-autocomplete-results>ul>li {
+        margin: 0;
+        padding: 0;
+    }
+}
+/* =============== UPDATED SEARCH RESULTS ============ */
+/* ===== Status Lights ===== */
+
+.status-light {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.journey-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-right: 1rem;
+}
+
+/* Light + caption stack */
+.status-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+/* Sub-label under the light */
+.status-text {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* GREEN */
+.status-green {
+  background-color: #2ecc71;
+  box-shadow:
+    0 0 6px rgba(46, 204, 113, 0.8),
+    0 0 12px rgba(46, 204, 113, 0.6);
+}
+
+/* YELLOW */
+.status-yellow {
+  background-color: #f1c40f;
+  box-shadow:
+    0 0 6px rgba(241, 196, 15, 0.8),
+    0 0 12px rgba(241, 196, 15, 0.6);
+}
+
+/* RED */
+.status-red {
+  background-color: #e74c3c;
+  box-shadow:
+    0 0 6px rgba(231, 76, 60, 0.8),
+    0 0 12px rgba(231, 76, 60, 0.6);
+}
+
+/* ======== Journey Key ======== */
+
+.journey-key-wrap {
+  margin-bottom: 1rem;
+}
+
+.journey-key-help {
+  margin-top: 0.5rem;
+  max-width: 75ch;
+}
+
+.journey-key-help summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.journey-key-help-body p {
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.journey-status-key {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom:1.5rem;
+  flex-wrap: wrap;
+  border-bottom: 4px solid var(--color-brand-yellow);
+}
+
+.status-key-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.status-key-label {
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .journey-status-key {
+    gap: 1rem;
+  }
+}
+
+/* ===== Results cards ====== */
+
+.journey-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.journey-data-title {
+  font-weight: bold;
+}
+
+
+
+.status { 
+  font-weight: bold;
+}
+
+@media (max-width: 810px) {
+  .journey-data {
+    flex-direction:column;
+    gap: 0.5rem; 
+  }
+
+  .journey-card { 
+
+  }
+
 }
